@@ -7,7 +7,7 @@ import (
 	"reflect"
 
 	"github.com/amnezia-vpn/amnezia-libxray/nodep"
-	statsService "github.com/amnezia-vpn/amnezia-xray-core/app/stats/command"
+	statsService "github.com/xtls/xray-core/app/stats/command"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 	"google.golang.org/protobuf/encoding/protojson"

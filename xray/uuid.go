@@ -1,7 +1,7 @@
 package xray
 
 import (
-	"github.com/amnezia-vpn/amnezia-xray-core/common/uuid"
+	"github.com/xtls/xray-core/common/uuid"
 )
 
 // convert text to uuid

@@ -5,7 +5,7 @@ import (
 	"os"
 	"path/filepath"
 
-	xrayfs "github.com/amnezia-vpn/amnezia-xray-core/common/platform/filesystem"
+	xrayfs "github.com/xtls/xray-core/common/platform/filesystem"
 	mobasset "golang.org/x/mobile/asset"
 )
 

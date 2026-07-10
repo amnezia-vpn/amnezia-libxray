@@ -4,7 +4,7 @@ import (
 	"syscall"
 
 	"github.com/amnezia-vpn/amnezia-libxray/nodep"
-	xinternet "github.com/amnezia-vpn/amnezia-xray-core/transport/internet"
+	xinternet "github.com/xtls/xray-core/transport/internet"
 )
 
 // Give a callback before connection beginning. Useful for Android development.

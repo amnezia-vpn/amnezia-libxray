@@ -8,7 +8,7 @@ import (
 	"strings"
 
 	"github.com/amnezia-vpn/amnezia-libxray/nodep"
-	"github.com/amnezia-vpn/amnezia-xray-core/app/router"
+	"github.com/xtls/xray-core/common/geodata"
 	"google.golang.org/protobuf/proto"
 )
 
@@ -71,18 +71,18 @@ func cutGeoSite(datDir string, dstDir string, dat geoCutCodeDat) error {
 	if err != nil {
 		return err
 	}
-	var geositeList router.GeoSiteList
+	var geositeList geodata.GeoSiteList
 	if err := proto.Unmarshal(geositeBytes, &geositeList); err != nil {
 		return err
 	}
 
-	var newEntry []*router.GeoSite
+	var newEntry []*geodata.GeoSite
 	for _, site := range geositeList.Entry {
-		if containsCountryCode(dat.Codes, site.CountryCode) {
+		if containsCountryCode(dat.Codes, site.Code) {
 			newEntry = append(newEntry, site)
 		}
 	}
-	var newGeositeList router.GeoSiteList
+	var newGeositeList geodata.GeoSiteList
 	newGeositeList.Entry = newEntry
 	newDatBytes, err := proto.Marshal(&newGeositeList)
 	if err != nil {
@@ -104,18 +104,18 @@ func cutGeoIP(datDir string, dstDir string, dat geoCutCodeDat) error {
 	if err != nil {
 		return err
 	}
-	var geoipList router.GeoIPList
+	var geoipList geodata.GeoIPList
 	if err := proto.Unmarshal(geoipBytes, &geoipList); err != nil {
 		return err
 	}
 
-	var newEntry []*router.GeoIP
+	var newEntry []*geodata.GeoIP
 	for _, ip := range geoipList.Entry {
-		if containsCountryCode(dat.Codes, ip.CountryCode) {
+		if containsCountryCode(dat.Codes, ip.Code) {
 			newEntry = append(newEntry, ip)
 		}
 	}
-	var newGeoipList router.GeoIPList
+	var newGeoipList geodata.GeoIPList
 	newGeoipList.Entry = newEntry
 	newDatBytes, err := proto.Marshal(&newGeoipList)
 	if err != nil {

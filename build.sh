@@ -1,18 +1,18 @@
 #!/bin/bash
 
+set -e
+
 prepare_go() {
-    rm -f go.mod
-    rm -f go.sum
-    go mod init github.com/amnezia-vpn/amnezia-libxray
     go mod tidy
 }
 
 prepare_gomobile() {
-    go install golang.org/x/mobile/cmd/gomobile@latest
-    go get golang.org/x/mobile/cmd/gobind
+    mobile_version=$(go list -m -f '{{.Version}}' golang.org/x/mobile)
+    go install golang.org/x/mobile/cmd/gomobile@"$mobile_version"
+    go install golang.org/x/mobile/cmd/gobind@"$mobile_version"
     export PATH=~/go/bin:$PATH
-    gomobile init
-    go get -d golang.org/x/mobile/cmd/gomobile
+    gopath=$(go env GOPATH)
+    mkdir -p "${gopath%%:*}/pkg/gomobile"
 }
 
 build_apple() {
@@ -28,7 +28,7 @@ build_android() {
     rm -fr assets
     mkdir -p assets/geo
     mv dat/* assets/geo
-    gomobile bind -target android -androidapi 24 -javapkg=org.amnezia.vpn.protocol.xray -o libxray.aar -ldflags="-w -s -buildid=" -trimpath
+    gomobile bind -target android -androidapi 24 -javapkg=org.amnezia.vpn.protocol.xray -o libxray.aar -ldflags="-w -s -buildid= -checklinkname=0" -trimpath
 }
 
 download_geo() {

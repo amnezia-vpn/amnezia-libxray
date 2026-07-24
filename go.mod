@@ -4,7 +4,7 @@ go 1.26
 
 require (
 	github.com/amnezia-vpn/amnezia-tun2socks/v2 v2.5.6
-	github.com/xtls/xray-core v1.260707.0
+	github.com/xtls/xray-core v1.260724.0
 	golang.org/x/mobile v0.0.0-20260217195705-b56b3793a9c4
 	golang.org/x/sys v0.46.0
 	google.golang.org/grpc v1.81.1
@@ -12,11 +12,11 @@ require (
 	gopkg.in/yaml.v3 v3.0.1
 )
 
-replace github.com/xtls/xray-core => github.com/amnezia-vpn/amnezia-xray-core v1.260707.0
+replace github.com/xtls/xray-core => github.com/amnezia-vpn/amnezia-xray-core v1.260724.0
 
 require (
 	github.com/ajg/form v1.6.1 // indirect
-	github.com/amnezia-vpn/amneziawg-go v0.2.18 // indirect
+	github.com/amnezia-vpn/amneziawg-go/v3 v3.0.1 // indirect
 	github.com/andybalholm/brotli v1.0.6 // indirect
 	github.com/apernet/quic-go v0.59.1-0.20260425001925-6c6cc9bcb716 // indirect
 	github.com/cloudflare/circl v1.6.4 // indirect
